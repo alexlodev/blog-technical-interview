@@ -1,12 +1,11 @@
 import mongoose from "mongoose";
 
-const MongoDb =
-  process.env.MONGODB_URI ||
-  "mongodb://localhost:27017/blog-technical-interview-db";
-
+const MongoDb = process.env.MONGODB_URI
 const connectDb = async () => {
   try {
-    mongoose.connect(MongoDb, {});
+    if (MongoDb) {
+      mongoose.connect(MongoDb);
+    }
   } catch (err) {
     process.exit(1);
   }
