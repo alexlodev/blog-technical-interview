@@ -8,8 +8,7 @@ import { ApolloClient, InMemoryCache } from "@apollo/client";
  * –––– Setup Apollo Client
  * –––––––––––––––––––––––––––––––––– */
 console.log("Apollo Client setup");
-const uri = process.env.GRAPHQL_ENDPOINT
 export const apolloClient = new ApolloClient({
-  uri,
+  uri: "https://blog-technical-interview.vercel.app/api/graphql",
   cache: new InMemoryCache(),
 });
