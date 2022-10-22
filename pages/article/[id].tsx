@@ -68,7 +68,7 @@ export default function Article() {
   return (
     <>
       {blog && (
-        <div className="text-center mx-5 flex-1 justify-center sm:m-auto max-w-2xl mt-20">
+        <div className="text-center mx-5 flex-1 justify-center sm:m-auto max-w-2xl pt-20">
           <h1 className="text-5xl font-bold mb-4">{blog.title}</h1>
           <h3 className="text-2xl text-gray-700 font-bold">
             {blog.description}
