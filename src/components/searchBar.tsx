@@ -1,6 +1,12 @@
-import { FormEvent } from "react";
+/* ––
+ * –––– Imports
+ * –––––––––––––––––––––––––––––––––– */
+// Third-party imports
 import { useForm } from "react-hook-form";
 
+/* ––
+ * –––– Component declaration
+ * –––––––––––––––––––––––––––––––––– */
 export default function SearchBar({
   handleSearch,
   resultsCount,

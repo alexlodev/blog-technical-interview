@@ -1,9 +1,18 @@
+/* ––
+ * –––– Imports
+ * –––––––––––––––––––––––––––––––––– */
+// Third-party imports
 import { ApolloServer } from "apollo-server-micro";
 import Cors from "micro-cors";
+
+// App imports
 import { resolvers } from "@graphql/resolvers";
 import { typeDefs } from "@graphql/shema";
 import connectDb from "@db/config";
 
+/* ––
+ * –––– Apollo Server configuration
+ * –––––––––––––––––––––––––––––––––– */
 const cors = Cors({
   allowMethods: ["GET", "HEAD", "POST"],
   origin: "*",
@@ -11,8 +20,8 @@ const cors = Cors({
 });
 
 connectDb();
-const server: ApolloServer = new ApolloServer({ typeDefs, resolvers });
 
+const server: ApolloServer = new ApolloServer({ typeDefs, resolvers });
 const startServer: Promise<void> = server.start();
 
 export const config = {

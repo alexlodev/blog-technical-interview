@@ -1,9 +1,19 @@
-import momment from "moment";
+/* ––
+ * –––– Imports
+ * –––––––––––––––––––––––––––––––––– */
+// Platform imports
 import { useEffect, useState } from "react";
-import MotionDiv from "./motion.div";
 import { useRouter } from "next/router";
-import useSaveFavoriteBlog from "@hooks/useSaveFavoriteBlog";
 
+// Third-party imports
+import momment from "moment";
+
+// App imports
+import MotionDiv from "./motion.div";
+
+/* ––
+ * –––– Props interface declaration
+ * –––––––––––––––––––––––––––––––––– */
 interface BlogThumbnail {
   _id: string;
   title: string;
@@ -16,6 +26,9 @@ interface BlogThumbnail {
   modality: string;
 }
 
+/* ––
+ * –––– Component declaration
+ * –––––––––––––––––––––––––––––––––– */
 export default function CardBlog({
   blog,
   isFavorite,

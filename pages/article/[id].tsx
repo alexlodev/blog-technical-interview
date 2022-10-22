@@ -1,11 +1,17 @@
+/* ––
+ * –––– Imports
+ * –––––––––––––––––––––––––––––––––– */
+// Platform imports
 import { useEffect, useState } from "react";
-import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { useSession } from "next-auth/react";
 import Image from "next/image";
 
+// Third-party imports
+import { useSession } from "next-auth/react";
+import { useQuery } from "@apollo/client";
 import momment from "moment";
 
+// App imports
 import FacebookIcon from "@assets/icons/face.png";
 import TwitterIcon from "@assets/icons/twitter.png";
 import InstagramIcon from "@assets/icons/insta.png";
@@ -28,13 +34,16 @@ interface BlogContent {
   content: string;
 }
 
+/* ––
+ * –––– Page declaration
+ * –––––––––––––––––––––––––––––––––– */
 export default function Article() {
   const [blog, setBlog] = useState<BlogContent | null>(null);
   const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { data: session } = useSession();
 
-  const { loading, error, data, fetchMore } = useQuery(GET_BLOG_BY_ID, {
+  const { data, fetchMore } = useQuery(GET_BLOG_BY_ID, {
     variables: {
       id: router.query.id,
     },

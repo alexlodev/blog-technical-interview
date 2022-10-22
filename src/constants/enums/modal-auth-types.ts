@@ -1,3 +1,6 @@
+/* ––
+ * –––– Enums declaration
+ * –––––––––––––––––––––––––––––––––– */
 export enum ModalAuthTypes {
   SIGN_IN,
   SIGN_UP,

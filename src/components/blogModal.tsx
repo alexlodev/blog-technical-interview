@@ -1,20 +1,34 @@
+/* ––
+ * –––– Imports
+ * –––––––––––––––––––––––––––––––––– */
+// Platform imports
+
+// Third-party imports
 import { motion } from "framer-motion";
-import useScapeKey from "@hooks/useEscapeKey";
-import { ModalBlogTypes } from "@constants/enums/modal-auth-types";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@apollo/client";
-import { CREATE_BLOG, UPDATE_BLOG } from "../graphql/queries";
 import toast from "react-hot-toast";
 
-export default function BlogModal({
-  type,
-  closeModal,
-  blog,
-}: {
+// App imports
+import useScapeKey from "@hooks/useEscapeKey";
+
+import { ModalBlogTypes } from "@constants/enums/modal-auth-types";
+
+import { CREATE_BLOG, UPDATE_BLOG } from "@graphql/queries";
+
+/* ––
+ * –––– Props interface declaration
+ * –––––––––––––––––––––––––––––––––– */
+interface BlogModalProps {
   type: ModalBlogTypes;
   closeModal: () => void;
   blog?: any;
-}) {
+}
+
+/* ––
+ * –––– Component declaration
+ * –––––––––––––––––––––––––––––––––– */
+export default function BlogModal({ type, closeModal, blog }: BlogModalProps) {
   const { register, handleSubmit, reset } = useForm();
 
   const [createBlog, { error: createError }] = useMutation(CREATE_BLOG);

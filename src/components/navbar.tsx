@@ -1,12 +1,25 @@
+/* ––
+ * –––– Imports
+ * –––––––––––––––––––––––––––––––––– */
+// Platform imports
+import { useState } from "react";
 import Image from "next/image";
-import Logo from "@assets/Logo.png";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import AuthModal from "./authModal";
-import { useState } from "react";
-import { ModalAuthTypes } from "@constants/enums/modal-auth-types";
+
+// Third-party imports
 import { useSession, signOut } from "next-auth/react";
 
+// App imports
+import Logo from "@assets/Logo.png";
+
+import AuthModal from "./authModal";
+
+import { ModalAuthTypes } from "@constants/enums/modal-auth-types";
+
+/* ––
+ * –––– Component declaration
+ * –––––––––––––––––––––––––––––––––– */
 export default function Navbar() {
   const [showModal, setShowModal] = useState(false);
   const { data: session } = useSession();

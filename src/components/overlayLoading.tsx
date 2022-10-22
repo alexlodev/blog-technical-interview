@@ -1,6 +1,15 @@
+/* ––
+ * –––– Imports
+ * –––––––––––––––––––––––––––––––––– */
+// App imports
+import MotionDiv from "./motion.div";
+
+/* ––
+ * –––– Component declaration
+ * –––––––––––––––––––––––––––––––––– */
 export default function OverLayoutLoading() {
   return (
-    <div className="absolute bg-white bg-opacity-6 inset-0 z-10 h-screen w-screen flex items-center justify-center">
+    <MotionDiv className="absolute bg-white bg-opacity-6 inset-0 z-10 h-screen w-screen flex items-center justify-center">
       <div className="flex items-center">
         <span className="text-3xl mr-4 text-primary">Loading</span>
         <svg
@@ -24,6 +33,6 @@ export default function OverLayoutLoading() {
           ></path>
         </svg>
       </div>
-    </div>
+    </MotionDiv>
   );
 }

@@ -1,8 +1,19 @@
+/* ––
+ * –––– Imports
+ * –––––––––––––––––––––––––––––––––– */
+// Platform imports
 import { useState } from "react";
-import { REMOVE_FAVORITE_BLOG, SET_FAVORITE_BLOG } from "@graphql/queries";
-import { useMutation } from "@apollo/client";
-import toast from "react-hot-toast";
 
+// Third-party imports
+import toast from "react-hot-toast";
+import { useMutation } from "@apollo/client";
+
+// App imports
+import { REMOVE_FAVORITE_BLOG, SET_FAVORITE_BLOG } from "@graphql/queries";
+
+/* ––
+ * –––– Hook declaration
+ * –––––––––––––––––––––––––––––––––– */
 export default function useSaveFavoriteBlog() {
   const [blogId, setBlogId] = useState("");
   const [userEmail, setUserEmail] = useState("");

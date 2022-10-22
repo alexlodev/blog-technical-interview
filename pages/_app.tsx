@@ -1,33 +1,32 @@
+/* ––
+ * –––– Imports
+ * –––––––––––––––––––––––––––––––––– */
+// Platform imports
+import { useEffect, useState } from "react";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { ApolloProvider } from "@apollo/client";
-import { useEffect, useState } from "react";
+
+// Third-party imports
 import { SessionProvider } from "next-auth/react";
 import { apolloClient } from "@graphql/client";
 import { Session } from "next-auth";
 import { AnimatePresence } from "framer-motion";
 import { Toaster } from "react-hot-toast";
 
+// App imports
 import Navbar from "@components/navbar";
 import "../globals.css";
-import Footer from "@components/footer";
 
+/* ––
+ * –––– App declaration
+ * –––––––––––––––––––––––––––––––––– */
 function MyApp({ Component, pageProps }: AppProps<{ session: Session }>) {
-  const [pageLoaded, setPageLoaded] = useState(false);
-
-  useEffect(() => {
-    setPageLoaded(true);
-  }, []);
-
-  if (!pageLoaded) {
-    return null;
-  }
-
   return (
     <ApolloProvider client={apolloClient}>
       <SessionProvider session={pageProps.session}>
         <Head>
-          <title>Blog</title>
+          <title>Lankit - Full stack app | Alexis Lo</title>
           <meta
             name="description"
             content="Lankit - Full stack app | Alexis Lo"

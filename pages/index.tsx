@@ -1,20 +1,30 @@
+/* ––
+ * –––– Imports
+ * –––––––––––––––––––––––––––––––––– */
+// Platform imports
 import type { NextPage } from "next";
-import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
+
+// Third-party imports
+import { useSession } from "next-auth/react";
 import { useQuery } from "@apollo/client";
 
+// App imports
 import BlogList from "@components/blogList";
 import SearchBar from "@components/searchBar";
 import Wrapper from "@components/wrapper";
 import EmptyState from "@components/emptyState";
 import BlogModal from "@components/blogModal";
 import OverLayoutLoading from "@components/overlayLoading";
+import Footer from "@components/footer";
 
 import { ModalBlogTypes } from "@constants/enums/modal-auth-types";
 
 import { GET_BLOGS } from "@graphql/queries";
-import Footer from "@components/footer";
 
+/* ––
+ * –––– Page declaration
+ * –––––––––––––––––––––––––––––––––– */
 const Home: NextPage = () => {
   const [blogs, setBlogs] = useState([]);
   const [limit, setLimit] = useState(6);
@@ -59,7 +69,7 @@ const Home: NextPage = () => {
   const handleSearch = (search: string) => {
     setLimit(6);
     setSearchCriteria(search);
-    
+
     fetchMore({
       variables: {
         limit,
@@ -82,10 +92,7 @@ const Home: NextPage = () => {
         ) : (
           <>
             {!!blogs.length && !loading && !error ? (
-              <BlogList
-                blogs={blogs}
-                loadMore={handleLoadMore}
-              />
+              <BlogList blogs={blogs} loadMore={handleLoadMore} />
             ) : (
               <EmptyState callback={() => setSearchCriteria("")} />
             )}

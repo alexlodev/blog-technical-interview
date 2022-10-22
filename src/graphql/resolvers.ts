@@ -1,7 +1,16 @@
+/* ––
+ * –––– Imports
+ * –––––––––––––––––––––––––––––––––– */
+// App imports
 import Blog from "@db/models/blog";
 import User from "@db/models/user";
 
+/* ––
+ * –––– Resolvers declaration
+ * –––––––––––––––––––––––––––––––––– */
 export const resolvers = {
+  /* ––  Queries
+   * –––––––––––––––––––––––––––––––––– */
   Query: {
     getAllBlogs: async (
       _: unknown,
@@ -65,6 +74,9 @@ export const resolvers = {
       return user;
     },
   },
+
+  /* –– Mutations
+   * –––––––––––––––––––––––––––––––––– */
   Mutation: {
     addBlog: async (_: unknown, arg: { newBlog: any }) => {
       const newBlog = new Blog({ ...arg });

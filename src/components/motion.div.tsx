@@ -1,5 +1,12 @@
+/* ––
+ * –––– Imports
+ * –––––––––––––––––––––––––––––––––– */
+// Third-party imports
 import { motion } from "framer-motion";
 
+/* ––
+ * –––– Component declaration
+ * –––––––––––––––––––––––––––––––––– */
 export default function MotionDiv(props: any) {
   return (
     <motion.div

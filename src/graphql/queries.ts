@@ -1,5 +1,15 @@
+/* ––
+ * –––– Imports
+ * –––––––––––––––––––––––––––––––––– */
+// Third-party imports
 import { gql } from "apollo-server-micro";
 
+/* ––
+ * –––– Queries and mutations
+ * –––––––––––––––––––––––––––––––––– */
+
+/* –– Blog queries
+ * –––––––––––––––––––––––––––––––––– */
 export const GET_BLOGS = gql`
   query GetAllBlogs($limit: Int, $search: String) {
     getAllBlogs(limit: $limit, search: $search) {
@@ -12,72 +22,6 @@ export const GET_BLOGS = gql`
       thumbnail
       price
       modality
-    }
-  }
-`;
-
-export const CREATE_BLOG = gql`
-  mutation AddBlog(
-    $title: String!
-    $description: String!
-    $author: String!
-    $authorImg: String!
-    $date: String!
-    $thumbnail: String!
-    $img: String!
-    $captionImage: String!
-    $price: String!
-    $modality: String!
-    $content: String!
-  ) {
-    addBlog(
-      title: $title
-      description: $description
-      author: $author
-      authorImg: $authorImg
-      date: $date
-      thumbnail: $thumbnail
-      img: $img
-      captionImage: $captionImage
-      price: $price
-      modality: $modality
-      content: $content
-    ) {
-      _id
-    }
-  }
-`;
-
-export const UPDATE_BLOG = gql`
-  mutation UpdateBlog(
-    $_id: String!
-    $title: String!
-    $description: String!
-    $author: String!
-    $authorImg: String!
-    $date: String!
-    $thumbnail: String!
-    $img: String!
-    $captionImage: String!
-    $price: String!
-    $modality: String!
-    $content: String!
-  ) {
-    updateBlog(
-      _id: $_id
-      title: $title
-      description: $description
-      author: $author
-      authorImg: $authorImg
-      date: $date
-      thumbnail: $thumbnail
-      img: $img
-      captionImage: $captionImage
-      price: $price
-      modality: $modality
-      content: $content
-    ) {
-      _id
     }
   }
 `;
@@ -117,26 +61,6 @@ export const GET_BLOG_BY_ID = gql`
   }
 `;
 
-export const SIGN_UP = gql`
-  mutation Mutation($email: String!, $name: String!, $password: String!) {
-    signUp(email: $email, name: $name, password: $password) {
-      _id
-      email
-      name
-      favoriteBlogsIds
-    }
-  }
-`;
-
-export const SIGN_IN = gql`
-  query SignIn($email: String!, $password: String!) {
-    signIn(email: $email, password: $password) {
-      email
-      name
-    }
-  }
-`;
-
 export const GET_FAVORITE_BLOGS_IDS_BY_USER = gql`
   query GetFavoriteBlogsIdsByUser($email: String!) {
     getFavoriteBlogsIdsByUser(email: $email) {
@@ -145,6 +69,8 @@ export const GET_FAVORITE_BLOGS_IDS_BY_USER = gql`
   }
 `;
 
+/* –– Blog mutations
+ * –––––––––––––––––––––––––––––––––– */
 export const SET_FAVORITE_BLOG = gql`
   mutation Mutation($blogId: String!, $userEmail: String!) {
     setFavoriteBlog(blogId: $blogId, userEmail: $userEmail) {
@@ -157,6 +83,96 @@ export const REMOVE_FAVORITE_BLOG = gql`
   mutation Mutation($blogId: String!, $userEmail: String!) {
     removeFavoriteBlog(blogId: $blogId, userEmail: $userEmail) {
       _id
+    }
+  }
+`;
+
+export const UPDATE_BLOG = gql`
+  mutation UpdateBlog(
+    $_id: String!
+    $title: String!
+    $description: String!
+    $author: String!
+    $authorImg: String!
+    $date: String!
+    $thumbnail: String!
+    $img: String!
+    $captionImage: String!
+    $price: String!
+    $modality: String!
+    $content: String!
+  ) {
+    updateBlog(
+      _id: $_id
+      title: $title
+      description: $description
+      author: $author
+      authorImg: $authorImg
+      date: $date
+      thumbnail: $thumbnail
+      img: $img
+      captionImage: $captionImage
+      price: $price
+      modality: $modality
+      content: $content
+    ) {
+      _id
+    }
+  }
+`;
+
+export const CREATE_BLOG = gql`
+  mutation AddBlog(
+    $title: String!
+    $description: String!
+    $author: String!
+    $authorImg: String!
+    $date: String!
+    $thumbnail: String!
+    $img: String!
+    $captionImage: String!
+    $price: String!
+    $modality: String!
+    $content: String!
+  ) {
+    addBlog(
+      title: $title
+      description: $description
+      author: $author
+      authorImg: $authorImg
+      date: $date
+      thumbnail: $thumbnail
+      img: $img
+      captionImage: $captionImage
+      price: $price
+      modality: $modality
+      content: $content
+    ) {
+      _id
+    }
+  }
+`;
+
+/* –– User queries
+ * –––––––––––––––––––––––––––––––––– */
+export const SIGN_IN = gql`
+  query SignIn($email: String!, $password: String!) {
+    signIn(email: $email, password: $password) {
+      email
+      name
+    }
+  }
+`;
+
+/* –– User mutations
+ * –––––––––––––––––––––––––––––––––– */
+export const SIGN_UP = gql`
+  mutation Mutation($email: String!, $name: String!, $password: String!) {
+    signUp(email: $email, name: $name, password: $password) {
+      _id
+      email
+      name
+      favoriteBlogsIds
     }
   }
 `;

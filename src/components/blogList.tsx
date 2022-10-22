@@ -1,11 +1,24 @@
-import { useQuery } from "@apollo/client";
+/* ––
+ * –––– Imports
+ * –––––––––––––––––––––––––––––––––– */
+// Platform imports
 import { useEffect, useState } from "react";
-import { GET_FAVORITE_BLOGS_IDS_BY_USER } from "@graphql/queries";
-import CardBlog from "@components/cardBlog";
-import { ArrowRightIcon } from "@heroicons/react/24/solid";
+
+// Third-party imports
+import { useQuery } from "@apollo/client";
 import { useSession } from "next-auth/react";
+import { ArrowRightIcon } from "@heroicons/react/24/solid";
+
+// App imports
+import CardBlog from "@components/cardBlog";
+
+import { GET_FAVORITE_BLOGS_IDS_BY_USER } from "@graphql/queries";
+
 import useSaveFavoriteBlog from "@hooks/useSaveFavoriteBlog";
 
+/* ––
+ * –––– Props interface declaration
+ * –––––––––––––––––––––––––––––––––– */
 interface BlogThumbnail {
   _id: string;
   title: string;
@@ -18,13 +31,14 @@ interface BlogThumbnail {
   modality: string;
 }
 
-export default function BlogList({
-  blogs,
-  loadMore,
-}: {
+interface BlogListProps {
   blogs: BlogThumbnail[];
   loadMore: () => void;
-}) {
+}
+/* ––
+ * –––– Component declaration
+ * –––––––––––––––––––––––––––––––––– */
+export default function BlogList({ blogs, loadMore }: BlogListProps) {
   const [favoritesBlogsIds, setFavoritesBlogsIds] = useState<string[]>([]);
   const { handleSaveFavoriteBlog, handleRemoveFavoriteBlog } =
     useSaveFavoriteBlog();

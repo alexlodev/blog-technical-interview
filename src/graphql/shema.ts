@@ -1,5 +1,12 @@
+/* ––
+ * –––– Imports
+ * –––––––––––––––––––––––––––––––––– */
+// Third-party imports
 import { gql } from "apollo-server-micro";
 
+/* ––
+ * –––– Type definitions
+ * –––––––––––––––––––––––––––––––––– */
 export const typeDefs = gql`
   type Blog {
     _id: String!
@@ -26,7 +33,7 @@ export const typeDefs = gql`
 
   type Query {
     getAllBlogs(limit: Int, search: String): [Blog]
-    getFavoriteBlogsIdsByUser (email: String!): User
+    getFavoriteBlogsIdsByUser(email: String!): User
     getBlogsByIds(ids: [String]!, limit: Int, search: String): [Blog]
     signIn(email: String!, password: String!): User
     searchBlogs(search: String!): [Blog]

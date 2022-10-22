@@ -1,7 +1,18 @@
-import { GET_FAVORITE_BLOGS_IDS_BY_USER } from "@graphql/queries";
-import { useQuery } from "@apollo/client";
+/* ––
+ * –––– Imports
+ * –––––––––––––––––––––––––––––––––– */
+// Platform imports
 import { useEffect, useState } from "react";
 
+// Third-party imports
+import { useQuery } from "@apollo/client";
+
+// App imports
+import { GET_FAVORITE_BLOGS_IDS_BY_USER } from "@graphql/queries";
+
+/* ––
+ * –––– Hook declaration
+ * –––––––––––––––––––––––––––––––––– */
 export default function useCheckIdBlogIsFavorite(
   userEmail: string,
   blogId: string

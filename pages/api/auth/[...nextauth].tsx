@@ -1,8 +1,17 @@
+/* ––
+ * –––– Imports
+ * –––––––––––––––––––––––––––––––––– */
+// Third-party imports
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+
+// App imports
 import { SIGN_IN, SIGN_UP } from "@graphql/queries";
 import { apolloClient } from "@graphql/client";
 
+/* ––
+ * –––– Next auth configuration
+ * –––––––––––––––––––––––––––––––––– */
 export default NextAuth({
   secret: "randomString",
   providers: [

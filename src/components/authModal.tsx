@@ -1,20 +1,32 @@
+/* ––
+ * –––– Imports
+ * –––––––––––––––––––––––––––––––––– */
+// Platform imports
 import { useState } from "react";
+import Image from "next/image";
+
+// Third-party imports
 import { useForm } from "react-hook-form";
 import { signIn } from "next-auth/react";
-
-import AuthModalImg from "@assets/auth-modal.png";
-import Image from "next/image";
 import { motion } from "framer-motion";
+
+// App imports
+import AuthModalImg from "@assets/auth-modal.png";
 import useScapeKey from "@hooks/useEscapeKey";
 import { ModalAuthTypes } from "@constants/enums/modal-auth-types";
 
-export default function AuthModal({
-  type,
-  closeModal,
-}: {
+/* ––
+ * –––– Props interface declaration
+ * –––––––––––––––––––––––––––––––––– */
+interface AuthModalProps {
   type: ModalAuthTypes;
   closeModal: () => void;
-}) {
+}
+
+/* ––
+ * –––– Component declaration
+ * –––––––––––––––––––––––––––––––––– */
+export default function AuthModal({ type, closeModal }: AuthModalProps) {
   const { register, handleSubmit, reset } = useForm();
   const [showPassword, setShowPassword] = useState(false);
   const isSignIn = type === ModalAuthTypes.SIGN_IN;

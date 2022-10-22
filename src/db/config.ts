@@ -1,6 +1,14 @@
+/* ––
+ * –––– Imports
+ * –––––––––––––––––––––––––––––––––– */
+// Third-party imports
 import mongoose from "mongoose";
 
-const MongoDb = process.env.MONGODB_URI
+/* ––
+ * –––– Connection to db
+ * –––––––––––––––––––––––––––––––––– */
+const MongoDb = process.env.MONGODB_URI;
+
 const connectDb = async () => {
   try {
     if (MongoDb) {

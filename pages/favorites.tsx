@@ -1,8 +1,14 @@
+/* ––
+ * –––– Imports
+ * –––––––––––––––––––––––––––––––––– */
+// Platform imports
 import { useEffect, useState } from "react";
 
+// Third-party imports
 import { useQuery } from "@apollo/client";
 import { useSession } from "next-auth/react";
 
+// App imports
 import EmptyState from "@components/emptyState";
 import OverLayoutLoading from "@components/overlayLoading";
 import BlogList from "@components/blogList";
@@ -15,6 +21,9 @@ import {
 } from "@graphql/queries";
 import Footer from "@components/footer";
 
+/* ––
+ * –––– Page declaration
+ * –––––––––––––––––––––––––––––––––– */
 export default function Favorites() {
   const [favoriteBlogs, setFavoriteBlogs] = useState([]);
   const [limit, setLimit] = useState(6);
@@ -74,7 +83,7 @@ export default function Favorites() {
       },
     });
   };
-
+  if (loading) return <OverLayoutLoading />;
   return (
     <>
       <Wrapper>
@@ -84,17 +93,13 @@ export default function Favorites() {
           handleSearch={handleSearch}
         />
 
-        {loading && !searchCriteria ? (
-          <OverLayoutLoading />
-        ) : (
-          <>
-            {!!favoriteBlogs.length && !loading && !error ? (
-              <BlogList blogs={favoriteBlogs} loadMore={handleLoadMore} />
-            ) : (
-              <EmptyState callback={() => setSearchCriteria("")} />
-            )}
-          </>
-        )}
+        <>
+          {!!favoriteBlogs.length ? (
+            <BlogList blogs={favoriteBlogs} loadMore={handleLoadMore} />
+          ) : (
+            <EmptyState callback={() => setSearchCriteria("")} />
+          )}
+        </>
       </Wrapper>
       <Footer />
     </>

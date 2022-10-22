@@ -1,5 +1,12 @@
+/* ––
+ * –––– Imports
+ * –––––––––––––––––––––––––––––––––– */
+// Third-party imports
 import mongoose from "mongoose";
 
+/* ––
+ * –––– Schema declaration
+ * –––––––––––––––––––––––––––––––––– */
 const { Schema, model, models } = mongoose;
 
 const UserSchema = new Schema({
@@ -22,8 +29,6 @@ const UserSchema = new Schema({
   },
 });
 
-
 const User = models.User || model("User", UserSchema);
-
 
 export default User;

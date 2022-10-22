@@ -1,23 +1,20 @@
-
-
-## Technical interview full stack | Alexis Lo
+## Technical interview full stack | Alexis Lo 👋🏼
 
 > **Some comments about then chanllenge:** It's a great challenge, I know I'm applying for a front-end role, but I wanted to take advantage and do some back-end work as well to show what I can do. Within this small documentation, it details a list of possible things that could have been better and that, for reasons of time, were not carried out. If you have any questions about the reasons for some of the implementations or any other questions, do not hesitate to contact me: alexislo15@hotmail.es
 
+### Build with:
 
-### Build with: 
 - Next Js Typescript
 - Graphql
 - Mongoose
 - MongoDB
 
+## Requierments:
 
-## Requierments: 
 - mongodb ( Create local conection or remote)
-- node 16+ 
+- node 16+
 
-
-First, run the development server:
+First, run the development server: ⚡️
 
 ```bash
 yarn # install dependecies
@@ -25,17 +22,17 @@ yarn # install dependecies
 yarn dev # run server =
 ```
 
-Open web client [http://localhost:3000](http://localhost:3000) 
+Open web client [http://localhost:3000](http://localhost:3000)
 
-Open graphql client [http://localhost:3000/api/graphql](http://localhost:3000/api/graphql) 
-
+Open graphql client [http://localhost:3000/api/graphql](http://localhost:3000/api/graphql)
 
 ## Features:
-- API Graphql 
+
+- API Graphql
 - Connection with real database
 
-
 ### As an unauthenticated user.
+
 - I can see blog posts available in the site ✅
 - I can see the full detail of each blog ✅
 - I can search for a post. ✅
@@ -49,14 +46,12 @@ Open graphql client [http://localhost:3000/api/graphql](http://localhost:3000/ap
 - I can remove a post from my favorites ✅
 - As a user I can create and edit posts ✅
 
-
-## Things i assumed
+## Things i assumed 😅
 
 - Given the figma, I assumed that it should not be pixel perfect since the design did not respect certain spacing.
 - Certain behaviors not detailed in the task but shown in figma were omitted.
 
-
-## Possible improvements and things I would have liked to do
+## Possible improvements and things I would have liked to do 🐛
 
 - I would have liked to improve the readability of some variable names
 - I would have liked to add unit tests
@@ -66,6 +61,75 @@ Open graphql client [http://localhost:3000/api/graphql](http://localhost:3000/ap
 - Components could be further broken down.
 - Auth system with some provider.
 - Delete blog option.
-- Improve the blog and edit options. 
-- Improve error handling 
+- Improve the blog and edit options.
+- Improve error handling
 - Improve UX with status messages
+
+
+## Folder structure 📁
+```
+├── README.md
+├── globals.css
+├── next-env.d.ts
+├── next.config.js
+├── package-lock.json
+├── package.json
+├── pages
+│   ├── \_app.tsx
+│   ├── api
+│   │   ├── auth
+│   │   │   └── [...nextauth].tsx
+│   │   └── graphql.ts
+│   ├── article
+│   │   └── [id].tsx
+│   ├── favorites.tsx
+│   └── index.tsx
+├── postcss.config.js
+├── public
+│   └── favicon.ico
+├── src
+│   ├── assets
+│   │   ├── Logo.png
+│   │   ├── auth-modal.png
+│   │   ├── empty-state.png
+│   │   ├── icons
+│   │   │   ├── face.png
+│   │   │   ├── insta.png
+│   │   │   └── twitter.png
+│   │   └── wave-card.svg
+│   ├── components
+│   │   ├── authModal.tsx
+│   │   ├── blogList.tsx
+│   │   ├── blogModal.tsx
+│   │   ├── cardBlog.tsx
+│   │   ├── emptyState.tsx
+│   │   ├── footer.tsx
+│   │   ├── motion.div.tsx
+│   │   ├── navbar.tsx
+│   │   ├── overlayLoading.tsx
+│   │   ├── searchBar.tsx
+│   │   └── wrapper.tsx
+│   ├── constants
+│   │   └── enums
+│   │   └── modal-auth-types.ts
+│   ├── db
+│   │   ├── config.ts
+│   │   ├── mock-blog-data.json
+│   │   ├── mockBlogs.ts
+│   │   └── models
+│   │   ├── blog.ts
+│   │   └── user.ts
+│   ├── graphql
+│   │   ├── client.ts
+│   │   ├── queries.ts
+│   │   ├── resolvers.ts
+│   │   └── shema.ts
+│   └── hooks
+│   ├── useCheckIfBlogIsFavorite.tsx
+│   ├── useEscapeKey.tsx
+│   └── useSaveFavoriteBlog.tsx
+├── tailwind.config.js
+├── tsconfig.json
+└── yarn.lock
+
+```

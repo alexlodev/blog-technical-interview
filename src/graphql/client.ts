@@ -1,6 +1,15 @@
+/* ––
+ * –––– Imports
+ * –––––––––––––––––––––––––––––––––– */
+// Third-party imports
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 
+/* ––
+ * –––– Setup Apollo Client
+ * –––––––––––––––––––––––––––––––––– */
+console.log("Apollo Client setup");
+const uri = process.env.GRAPHQL_ENDPOINT || "http://localhost:3000/api/graphql";
 export const apolloClient = new ApolloClient({
-  uri: process.env.PRODUCTION_GRAPHQL_ENDPOINT || "http://localhost:3000/api/graphql",
+  uri,
   cache: new InMemoryCache(),
 });
