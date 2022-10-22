@@ -15,7 +15,7 @@ import connectDb from "@db/config";
  * –––––––––––––––––––––––––––––––––– */
 const cors = Cors({
   allowMethods: ["GET", "HEAD", "POST"],
-  origin: "*",
+  origin: "https://blog-technical-interview.vercel.app/",
   allowHeaders: ["Access-Control-Allow-Origin", "Content-Type"],
 });
 
