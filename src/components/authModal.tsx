@@ -9,6 +9,7 @@ import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { signIn } from "next-auth/react";
 import { motion } from "framer-motion";
+import toast from "react-hot-toast";
 
 // App imports
 import AuthModalImg from "@assets/auth-modal.png";
@@ -48,9 +49,16 @@ export default function AuthModal({ type, closeModal }: AuthModalProps) {
       });
     }
 
-    if (res && !res.error) {
+    if (!res || res.status === 401) {
+      if (isSignIn) {
+        toast.error("Invalid credentials or user does not exist");
+      }
+    } else if (res.status === 200) {
+      toast.success(`Welcome ${isSignIn ? "back" : "to the blog"}!`);
       reset();
       closeModal();
+    } else {
+      toast.error("Something went wrong");
     }
   };
 
